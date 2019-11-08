@@ -11,6 +11,24 @@ public class Main
     String punctuation = "";
     Character lastChar;
     String hexText = null;
+    String selection = null;
+    
+    System.out.print("Type one.   ");
+    selection = inn.nextLine();
+    
+    switch(selection.toLowerCase())
+    {
+        case "a": 
+            System.out.println("You picked A.\n");
+            break;
+        case "b": 
+            System.out.println("You picked B. \n");
+            break;
+        default :
+            System.out.println("Invalid selection.");
+            break;
+            //make this case structure do the below method. put below in own files later
+    }
     
     System.out.println("Type 'STOPP' to finish sending lines (case sensitive).");
     System.out.print("Enter your text:   ");
