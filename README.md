@@ -1,2 +1,2 @@
 # sbbbot
-bot for discord bot
+if you know what this is, congratulations you found it
