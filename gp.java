@@ -7,42 +7,50 @@ public class Main
   public static void main(String [] args)
   {
     Scanner inn = new Scanner(System.in);
-    String input;
+    String input = null;
     String punctuation = "";
     Character lastChar;
-
-    System.out.println("Enter your text: ");
+    String hexText = null;
+    
+    System.out.println("Type 'STOPP' to finish sending lines (case sensitive).");
+    System.out.print("Enter your text:   ");
     input = inn.nextLine();
 
-    input = input.toLowerCase();
-    lastChar = input.charAt(input.length() - 1);
-
-    if (lastChar.equals('?'))
+    while (!input.equals("STOPP"))
     {
-      punctuation = "Q";
-      input = (input.substring(0, input.length() - 1));
-    }
-    else if (lastChar.equals('!'))
-    {
-      punctuation = "E";
-      input = (input.substring(0, input.length() - 1));
-    }
-    else if (lastChar.equals('.'))
-    {
-      punctuation = "P";
-      input = (input.substring(0, input.length() - 1));
-    }
-    else
-    {
-      punctuation = "N";
-    }
+        
+        input = input.toLowerCase();
+        lastChar = input.charAt(input.length() - 1);
     
-    String hexText = toHex(input);
-    checkSumMaker(hexText);
-    
+        if (lastChar.equals('?'))
+        {
+          punctuation = "Q";
+          input = (input.substring(0, input.length() - 1));
+        }
+        else if (lastChar.equals('!'))
+        {
+          punctuation = "E";
+          input = (input.substring(0, input.length() - 1));
+        }
+        else if (lastChar.equals('.'))
+        {
+          punctuation = "P";
+          input = (input.substring(0, input.length() - 1));
+        }
+        else
+        {
+          punctuation = "N";
+        }
+        
+        hexText = toHex(input);
+        checkSumMaker(hexText);
+        System.out.println("\nModified text:");
+        System.out.println("$GP" + punctuation + " " + input + "*" + checkSumMaker(hexText));//edit hexText later
+        System.out.print("\nEnter your text:   ");
+        input = inn.nextLine();
+    }
     //checksum
-    System.out.println("\nModified text:");
-    System.out.println("$GP" + punctuation + " " + input + "*" + checkSumMaker(hexText));//edit hexText later
+    
 
   }
 
